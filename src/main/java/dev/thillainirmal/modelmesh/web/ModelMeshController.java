@@ -1,0 +1,35 @@
+package dev.thillainirmal.modelmesh.web;
+
+import dev.thillainirmal.modelmesh.model.ProviderProfile;
+import dev.thillainirmal.modelmesh.model.RouteDecision;
+import dev.thillainirmal.modelmesh.model.RouteRequest;
+import dev.thillainirmal.modelmesh.service.ModelMeshRouter;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api")
+public class ModelMeshController {
+    private final ModelMeshRouter router;
+
+    public ModelMeshController(ModelMeshRouter router) { this.router = router; }
+
+    @GetMapping("/providers")
+    public List<ProviderProfile> providers() { return router.providers(); }
+
+    @PostMapping("/route")
+    public RouteDecision route(@Valid @RequestBody RouteRequest request) { return router.route(request); }
+
+    @GetMapping("/demo")
+    public Map<String, RouteDecision> demo() {
+        return Map.of(
+                "quality", router.route(new RouteRequest("Review this architecture for concurrency risks",
+                        RouteRequest.Priority.QUALITY, RouteRequest.Sensitivity.INTERNAL, false, 900)),
+                "private", router.route(new RouteRequest("Summarize a restricted incident report",
+                        RouteRequest.Priority.BALANCED, RouteRequest.Sensitivity.RESTRICTED, false, 500))
+        );
+    }
+}

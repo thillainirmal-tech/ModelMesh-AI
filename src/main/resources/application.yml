@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: modelmesh-ai
+server:
+  port: ${PORT:8082}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
