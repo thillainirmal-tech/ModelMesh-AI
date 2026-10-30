@@ -14,6 +14,8 @@ Policy-driven multi-provider AI gateway for Java teams. ModelMesh ranks OpenAI, 
 
 [Open the full-resolution screenshot](docs/media/product-console.jpg) · **Recruiter demo:** route a workload by sensitivity and priority, inspect provider scoring and fallback, then execute through a configured provider adapter.
 
+[▶ Watch the recorded routing demo (5 seconds)](docs/media/runtime-demo.mp4)
+
 > **Deployment status:** tested, containerized and ready for an AWS deployment; live providers require operator-supplied credentials and no public production endpoint is claimed yet.
 
 ## Highlights
