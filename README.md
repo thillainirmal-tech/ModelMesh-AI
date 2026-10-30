@@ -1,5 +1,7 @@
 # ModelMesh AI
 
+> Version 2 executes real requests. `POST /api/route` remains a dry-run policy decision; `POST /api/execute` invokes the selected OpenAI, Gemini, Anthropic, or local Ollama provider and attempts the policy-approved fallback on provider failure. Missing credentials fail explicitly—no simulated model response is returned.
+
 Policy-driven multi-provider AI gateway for Java teams. ModelMesh ranks OpenAI, Gemini, Anthropic and a private runtime by privacy, quality, latency and cost, then returns an auditable route and fallback.
 
 [![CI](https://github.com/thillainirmal-tech/ModelMesh-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/thillainirmal-tech/ModelMesh-AI/actions/workflows/ci.yml)
