@@ -29,7 +29,7 @@ curl -X POST http://localhost:8082/api/route -H "Content-Type: application/json"
   -d '{"prompt":"Review this design","priority":"QUALITY","sensitivity":"INTERNAL","visionRequired":false,"expectedOutputTokens":700}'
 ```
 
-Provider prices and model names are demonstration configuration, not live quotes. Plug real provider adapters behind the routing decision in production.
+Provider prices are routing-policy configuration rather than billing quotes. Real provider adapters are active through `/api/execute`; update the configured price and model catalogue as part of normal operational maintenance.
 
 ## Test
 
@@ -40,7 +40,7 @@ Provider prices and model names are demonstration configuration, not live quotes
 - circuit breakers and rolling provider health
 - budget envelopes per team
 - OpenTelemetry decision traces
-- pluggable Spring AI provider adapters
+- circuit-breaker policies around provider adapters
 - shadow routing and response evaluation
 
 Apache-2.0. Contributions should use synthetic prompts and must not include credentials or confidential data.

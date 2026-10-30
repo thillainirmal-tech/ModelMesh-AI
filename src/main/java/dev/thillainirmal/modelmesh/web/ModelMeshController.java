@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -30,13 +29,4 @@ public class ModelMeshController {
     @PostMapping("/execute")
     public ExecutionResponse execute(@Valid @RequestBody ExecuteRequest request) { return execution.execute(request); }
 
-    @GetMapping("/demo")
-    public Map<String, RouteDecision> demo() {
-        return Map.of(
-                "quality", router.route(new RouteRequest("Review this architecture for concurrency risks",
-                        RouteRequest.Priority.QUALITY, RouteRequest.Sensitivity.INTERNAL, false, 900)),
-                "private", router.route(new RouteRequest("Summarize a restricted incident report",
-                        RouteRequest.Priority.BALANCED, RouteRequest.Sensitivity.RESTRICTED, false, 500))
-        );
-    }
 }
